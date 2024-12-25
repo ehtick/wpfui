@@ -7,24 +7,19 @@ using Wpf.Ui.Gallery.Models;
 
 namespace Wpf.Ui.Gallery.ViewModels.Pages.Collections;
 
-public partial class DataGridViewModel : ObservableObject
+public partial class DataGridViewModel : ViewModel
 {
     [ObservableProperty]
-    private ObservableCollection<Product> _productsCollection;
+    private ObservableCollection<Product> _productsCollection = GenerateProducts();
 
-    public DataGridViewModel()
-    {
-        _productsCollection = GenerateProducts();
-    }
-
-    private ObservableCollection<Product> GenerateProducts()
+    private static ObservableCollection<Product> GenerateProducts()
     {
         var random = new Random();
         var products = new ObservableCollection<Product> { };
 
         var adjectives = new[] { "Red", "Blueberry" };
         var names = new[] { "Marmalade", "Dumplings", "Soup" };
-        var units = new[] { "grams", "kilograms", "milliliters" };
+        /*var units = new[] { "grams", "kilograms", "milliliters" };*/
 
         for (int i = 0; i < 50; i++)
         {
